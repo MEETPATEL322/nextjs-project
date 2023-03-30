@@ -1,0 +1,82 @@
+.login-block {
+  padding: 4% 0;
+  width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+.Heading{
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.login-Form {
+  width: 500px;
+}
+
+.login-block .form-group {
+  margin-top: 15px;
+}
+
+.login-block .form-group label {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.login-block .RadioBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-block .RadioBox2{
+  width: 100%;
+  height: 44px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+}
+
+.login-block .RadioBox .form-check {
+  display: flex;
+  align-items: center;
+  
+}
+
+.login-block .RadioBox .form-check .form-check-label {
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+
+.login-block .form-control,
+.login-block .form-select {
+  padding: 0.5rem;
+  border: 2px solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.login-block .AddressForm textarea.form-control {
+  max-height: 44px;
+}
+
+.SubmitBtn,
+.SubmitBtn:focus,
+.SubmitBtn:hover,
+.SubmitBtn:active {
+  background-color: #fedabf !important;
+  width: 150px;
+  height: 44px;
+  color: #333;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .login-block form {
+    max-width: 100%;
+  }
+}
