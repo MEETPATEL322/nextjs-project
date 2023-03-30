@@ -90,9 +90,9 @@ const handler = async (req, res) => {
       });
       info.save().then((data) => {
         if (data) {
-          res.status(200).json({ message: "Information Added", data: data });
+          res.status(200).json({success:true, message: "Information Added", data: data });
         } else {
-          res.status(200).json({ message: "error in Information adding" });
+          res.status(200).json({ success:false,message: "error in Information adding" });
         }
       });
     });
@@ -100,7 +100,7 @@ const handler = async (req, res) => {
     let data = await InfoModel.find();
     res
       .status(200)
-      .json({ message: "Getting Information data successfully", data: data });
+      .json({success:true, message: "Getting Information data successfully", data: data });
   } else if (req.method == "DELETE") {
     // console.log(req.query.id);
     const data = await InfoModel.findById({ _id: req.query.id });

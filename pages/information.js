@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import style from '../styles/contact.module.css';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import { useNavigate } from 'react-router-dom';
 
 const Information = () => {
@@ -39,9 +41,42 @@ const Information = () => {
                 mimeType: "multipart/form-data",
             },
         }).then((response) => {
-            console.log(response.data);
-            alert("data added successfully");
-            // navigate("/StudentList", ({ return: true }))
+
+
+            if (response.data.success) {
+
+                toast.success(response.data.message, {
+                    position: "bottom-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                // setTimeout(() => {
+                //     // if (responsejson.type == "Admin") {
+                //     router.push("/information")
+                //     // } else {
+                //     //   router.push("/")
+
+                //     // }
+
+                // }, 1000);
+
+
+            } else {
+                toast.error(response.data.message, {
+                    position: "bottom-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+
+            }
         })
     }
     const handlefile = (e) => {
@@ -70,7 +105,17 @@ const Information = () => {
         // setcheckeddata({ ...checkeddata, [e.target.name]: [e.target.chacked, e.target.value] })
     }
     return (
-        <>
+        <> <ToastContainer
+            position="bottom-center"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
             <section className={`${style["login-block"]}`}>
                 <div className={`container ${style['']}`}>
                     <form className="login-form mt-3" onSubmit={handlesubmit}>
@@ -188,7 +233,7 @@ const Information = () => {
 
                             <div className="col-md-12 mt-3">
                                 <button type="submit" className={`${style['SubmitBtn']} btn`}>Submit</button>
-                                <div className='pt-2'>Already have an Account? <a href="login">sign in</a></div>
+
                             </div>
 
                         </div>
