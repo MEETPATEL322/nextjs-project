@@ -20,6 +20,7 @@
     "i": "^0.3.7",
     "jquery": "^3.6.4",
     "jsonwebtoken": "^9.0.0",
+    "moment": "^2.29.4",
     "mongoose": "^7.0.2",
     "multer": "^1.4.5-lts.1",
     "next": "13.2.4",
@@ -27,7 +28,9 @@
     "nodemailer": "^6.9.1",
     "npm": "^9.6.2",
     "react": "18.2.0",
+    "react-crud-icons": "^1.2.2",
     "react-dom": "18.2.0",
+    "react-icons": "^4.8.0",
     "react-router-dom": "^5.3.0",
     "react-toastify": "^9.1.2"
   }

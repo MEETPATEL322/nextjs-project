@@ -1,0 +1,108 @@
+.main-header {
+  min-height: 80px;
+  width: 100%;
+  position: fixed;
+  z-index: 1001;
+}
+
+.logo-header {
+  background: #333;
+  width: 250px;
+  height: 80px;
+  display: flex;
+  padding: 10px 15px;
+  align-items: center;
+  justify-content: center;
+  float: left;
+}
+
+.LogoutBtn {
+  width: 150px;
+  height: 50px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  border: 1px solid #333;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.logo-header .logo {
+  text-decoration: none;
+}
+
+.logo-header .Heading {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.navbar-header {
+  min-height: 80px;
+  width: calc(100% - 250px);
+  box-shadow: 0px 3px 6px #00000029;
+}
+
+.sidebar {
+  z-index: 999 !important;
+  background-color: #ECF0FF !important;
+  margin-top: 80px !important;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  display: block;
+  transition: all .3s;
+}
+
+.sidebar .sidebar-wrapper .sidebar-content {
+  margin-top: 20px;
+  padding-bottom: 0;
+}
+
+.sidebar.sidebar-style-2 .nav .nav-item {
+  padding: 0 18px;
+  margin-bottom: 8px;
+}
+
+.sidebar.sidebar-style-2 .nav .nav-item a {
+  text-decoration: none;
+  margin-bottom: 0;
+
+}
+
+.sidebar .nav>.nav-item a p {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.tx-222D39 {
+  color: #222D39 !important;
+}
+
+.TableData {
+  width: calc(100% - 280px);
+  position: relative;
+  height: 100vh;
+  min-height: 100%;
+  float: right;
+  transition: all .3s;
+
+}
+
+.TableData>.TableDataContent {
+  margin-top: 80px;
+  padding: 0 !important;
+  min-height: calc(100% - 123px);
+  overflow: hidden;
+}
+
+.TableData .container {
+  padding-top: 1.5rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  margin-bottom: 20px;
+}

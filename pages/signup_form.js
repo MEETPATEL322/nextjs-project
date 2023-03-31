@@ -78,7 +78,7 @@ const SignUPForm = () => {
                   <div className={`${style["RadioBox"]} ${style["RadioBox2"]}`} >
                     <div className={`${style["form-check"]} form-check`}>
                       <input className={`${style["form-check-input"]} form-check-input`} type="radio" onChange={handlechange} name="type" value={"Admin"} id="flexRadioAdmin" />
-                      <label className={`${style["form-check-label"]} form-check-label`} for="flexRadioAdmin">Admin</label>
+                      <label className={`${style["form-check-label"]} form-check-label`} htmlFor="flexRadioAdmin">Admin</label>
                     </div>
                   </div>
                 </div>
@@ -88,7 +88,7 @@ const SignUPForm = () => {
                   <div className={`${style["RadioBox"]} ${style["RadioBox2"]}`} >
                     <div className={`${style["form-check"]} form-check`}>
                       <input className={`${style["form-check-input"]} form-check-input`} type="radio" onChange={handlechange} name="type" value={"User"} id="flexRadioUser" />
-                      <label className={`${style["form-check-label"]} form-check-label`} for="flexRadioUser">User</label>
+                      <label className={`${style["form-check-label"]} form-check-label`} htmlFor="flexRadioUser">User</label>
                     </div>
                   </div>
                 </div>
@@ -97,15 +97,15 @@ const SignUPForm = () => {
               {/* Email address */}
               <div className="col-md-12">
                 <div className={`${style['form-group']} form-group`}>
-                  <label for="exampleInputEmail" className="">Email address</label>
-                  <input type="email" asp-for="Emailaddress" onChange={handlechange} name="email" className={`${style['form-control']} form-control`} placeholder="enter email" />
+                  <label htmlFor="exampleInputEmail" className="">Email address</label>
+                  <input type="email"  onChange={handlechange} name="email" className={`${style['form-control']} form-control`} placeholder="enter email" />
                 </div>
               </div>
               {/* Password */}
               <div className="col-md-12">
                 <div className={`${style['form-group']} form-group`}>
-                  <label for="exampleInputPassword" className="">Password</label>
-                  <input type="password" asp-for="Password" onChange={handlechange} name="password" className={`${style['form-control']} form-control`} placeholder="enter password" />
+                  <label htmlFor="exampleInputPassword" className="">Password</label>
+                  <input type="password"  onChange={handlechange} name="password" className={`${style['form-control']} form-control`} placeholder="enter password" />
                 </div>
               </div>
               <div className="col-md-12 mt-3">

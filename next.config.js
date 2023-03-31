@@ -2,6 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   runtime: 'nodejs',
+  images: {
+    unoptimized: true,
+    minimumCacheTTL: 60
+  },
   env: {
     BASE_URL: process.env.BASE_URL,
   },

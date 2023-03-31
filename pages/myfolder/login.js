@@ -126,22 +126,22 @@ const Login = () => {
                         <h1>Login Page</h1>
                         <form onSubmit={handlesubmit}>
                             <div className="form-group">
-                                <label htmlFor="type">Account Type:</label>
+                                <label htmlhtmlFor="type">Account Type:</label>
                                 <div className="form-check">
                                     <input type="radio" id="user" onChange={handleChange} name="type" value="User" className="form-check-input" />
-                                    <label htmlFor="user" className="form-check-label">User</label>
+                                    <label htmlhtmlFor="user" className="form-check-label">User</label>
                                 </div>
                                 <div className="form-check">
                                     <input type="radio" id="admin" onChange={handleChange} name="type" value="Admin" className="form-check-input" />
-                                    <label htmlFor="admin" className="form-check-label">Admin</label>
+                                    <label htmlhtmlFor="admin" className="form-check-label">Admin</label>
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="email">email:</label>
+                                <label htmlhtmlFor="email">email:</label>
                                 <input type="text" id="email" onChange={handleChange} name="email" className="form-control" />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="password">Password:</label>
+                                <label htmlhtmlFor="password">Password:</label>
                                 <input type="password" id="password" onChange={handleChange} name="password" className="form-control" />
                             </div>
                             <Link href={'/signup'}>Register</Link>

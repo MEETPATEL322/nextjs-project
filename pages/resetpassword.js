@@ -79,7 +79,7 @@ const Resetpassword = () => {
                   <div className={`${style["RadioBox"]} ${style["RadioBox2"]}`} >
                     <div className={`${style["form-check"]} form-check`}>
                       <input className={`${style["form-check-input"]} form-check-input`} type="radio" onChange={handlechange} name="type" value={"Admin"} id="flexRadioAdmin" />
-                      <label className={`${style["form-check-label"]} form-check-label`} for="flexRadioAdmin">Admin</label>
+                      <label className={`${style["form-check-label"]} form-check-label`} htmlFor="flexRadioAdmin">Admin</label>
                     </div>
                   </div>
                 </div>
@@ -89,7 +89,7 @@ const Resetpassword = () => {
                   <div className={`${style["RadioBox"]} ${style["RadioBox2"]}`} >
                     <div className={`${style["form-check"]} form-check`}>
                       <input className={`${style["form-check-input"]} form-check-input`} type="radio" onChange={handlechange} name="type" value={"User"} id="flexRadioUser" />
-                      <label className={`${style["form-check-label"]} form-check-label`} for="flexRadioUser">User</label>
+                      <label className={`${style["form-check-label"]} form-check-label`} htmlFor="flexRadioUser">User</label>
                     </div>
                   </div>
                 </div>
@@ -98,15 +98,15 @@ const Resetpassword = () => {
               {/* Email address */}
               <div className="col-md-12">
                 <div className={`${style['form-group']} form-group`}>
-                  <label for="exampleInputEnterPassword1" className="">New Password</label>
-                  <input type="password" asp-for="EnterPassword" onChange={handlechange} name='newpassword' className={`${style['form-control']} form-control`} placeholder="newpassword" />
+                  <label htmlFor="exampleInputEnterPassword1" className="">New Password</label>
+                  <input type="password"  onChange={handlechange} name='newpassword' className={`${style['form-control']} form-control`} placeholder="newpassword" />
                 </div>
               </div>
               {/* Password */}
               <div className="col-md-12">
                 <div className={`${style['form-group']} form-group`}>
-                  <label for="exampleInputEnterPassword2" className="">Re-Enter New Password</label>
-                  <input type="password" asp-for="EnterPassword2" onChange={handlechange} name='confirmpassword' className={`${style['form-control']} form-control`} placeholder="confirmpassword" />
+                  <label htmlFor="exampleInputEnterPassword2" className="">Re-Enter New Password</label>
+                  <input type="password"  onChange={handlechange} name='confirmpassword' className={`${style['form-control']} form-control`} placeholder="confirmpassword" />
                 </div>
               </div>
               <div className="col-md-12 mt-3">

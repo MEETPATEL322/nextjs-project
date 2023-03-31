@@ -47,7 +47,7 @@ var upload = multer({
 
 const handler = async (req, res) => {
 
- 
+
 
   if (req.method == "POST") {
     res.setHeader('Access-Control-Allow-Origin', '*')
@@ -90,18 +90,40 @@ const handler = async (req, res) => {
       });
       info.save().then((data) => {
         if (data) {
-          res.status(200).json({success:true, message: "Information Added", data: data });
+          res.status(200).json({ success: true, message: "Information Added", data: data });
         } else {
-          res.status(200).json({ success:false,message: "error in Information adding" });
+          res.status(200).json({ success: false, message: "error in Information adding" });
         }
       });
     });
   } else if (req.method == "GET") {
-    let data = await InfoModel.find();
-    res
-      .status(200)
-      .json({success:true, message: "Getting Information data successfully", data: data });
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+    if (req.query.id) {
+      let data = await InfoModel.findById({ _id: req.query.id });
+      if (data) {
+        res
+          .status(200)
+          .json({ success: true, message: "Getting Particular Information data successfully", data: data });
+      } else {
+        res
+          .status(200)
+          .json({ success: false, message: "Error in Getting Particular Information data successfully", data: data });
+
+      }
+
+    } else {
+      let data = await InfoModel.find();
+      res
+        .status(200)
+        .json({ success: true, message: "Getting Information data successfully", data: data });
+    }
+
   } else if (req.method == "DELETE") {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
     // console.log(req.query.id);
     const data = await InfoModel.findById({ _id: req.query.id });
     if (data) {
@@ -138,6 +160,9 @@ const handler = async (req, res) => {
         .json({ message: "This Data is Not available in Database" });
     }
   } else if (req.method == "PUT") {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
 
     upload(req, res, async (err) => {
       if (err) {
@@ -194,7 +219,6 @@ const handler = async (req, res) => {
           res.status(400).send({ message: "image not found " })
 
         }
-
       } else {
         res
           .status(400)

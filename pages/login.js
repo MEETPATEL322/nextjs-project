@@ -21,6 +21,7 @@ const Login = () => {
     // console.log("responce", responsejson.msg)
     if (responsejson.success) {
       localStorage.setItem("token", responsejson.token)
+      localStorage.setItem("type", responsejson.type)
       toast.success(responsejson.msg, {
         position: "bottom-center",
         autoClose: 1000,
@@ -31,13 +32,11 @@ const Login = () => {
         progress: undefined,
       });
       setTimeout(() => {
-        // if (responsejson.type == "Admin") {
-          router.push("/information")
-        // } else {
-        //   router.push("/")
-
-        // }
-
+        if (responsejson.type == "Admin") {
+          router.push("/admin")
+        } else {
+          router.push("/profile")
+        }
       }, 1000);
 
 
@@ -51,21 +50,21 @@ const Login = () => {
         draggable: true,
         progress: undefined,
       });
-
     }
-
   }
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     router.push("/")
-  //   } else {
-  //     router.push("/login")
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (localStorage.getItem("token") && (localStorage.getItem("type") == "User")) {
+      router.push("/profile")
+    } else if (localStorage.getItem("token") && (localStorage.getItem("type") == "Admin")) {
+      router.push("/admin")
+
+    } else {
+      router.push("/login")
+    }
+  }, [])
   const handlechange = (e) => {
     e.preventDefault();
     setloginData({ ...loginData, [e.target.name]: e.target.value })
-
   }
   return (
     <>
@@ -93,7 +92,7 @@ const Login = () => {
                   <div className={`${style["RadioBox"]} ${style["RadioBox2"]}`} >
                     <div className={`${style["form-check"]} form-check`}>
                       <input className={`${style["form-check-input"]} form-check-input`} type="radio" value="Admin" onChange={handlechange} name="type" id="flexRadioAdmin" />
-                      <label className={`${style["form-check-label"]} form-check-label`} for="flexRadioAdmin">Admin</label>
+                      <label className={`${style["form-check-label"]} form-check-label`} htmlFor="flexRadioAdmin">Admin</label>
                     </div>
                   </div>
                 </div>
@@ -103,7 +102,7 @@ const Login = () => {
                   <div className={`${style["RadioBox"]} ${style["RadioBox2"]}`} >
                     <div className={`${style["form-check"]} form-check`}>
                       <input className={`${style["form-check-input"]} form-check-input`} type="radio" value="User" onChange={handlechange} name="type" id="flexRadioUser" />
-                      <label className={`${style["form-check-label"]} form-check-label`} for="flexRadioUser">User</label>
+                      <label className={`${style["form-check-label"]} form-check-label`} htmlFor="flexRadioUser">User</label>
                     </div>
                   </div>
                 </div>
@@ -112,15 +111,15 @@ const Login = () => {
               {/* Email address */}
               <div className="col-md-12">
                 <div className={`${style['form-group']} form-group`}>
-                  <label for="exampleInputEmail" className="">Email address</label>
-                  <input type="email" asp-for="Emailaddress" onChange={handlechange} name='email' className={`${style['form-control']} form-control`} placeholder="email" />
+                  <label htmlFor="exampleInputEmail" className="">Email address</label>
+                  <input type="email" onChange={handlechange} name='email' className={`${style['form-control']} form-control`} placeholder="email" />
                 </div>
               </div>
               {/* Password */}
               <div className="col-md-12">
                 <div className={`${style['form-group']} form-group`}>
-                  <label for="exampleInputPassword" className="">Password</label>
-                  <input type="password" asp-for="Password" onChange={handlechange} name='password' className={`${style['form-control']} form-control`} placeholder="password" />
+                  <label htmlFor="exampleInputPassword" className="">Password</label>
+                  <input type="password" onChange={handlechange} name='password' className={`${style['form-control']} form-control`} placeholder="password" />
                 </div>
               </div>
               <div className="col-md-12 mt-3">

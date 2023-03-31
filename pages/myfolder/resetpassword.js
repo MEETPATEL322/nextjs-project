@@ -59,22 +59,22 @@ const Resetpassword = () => {
                         <h1>Resetpassword Page</h1>
                         <form>
                             <div className="form-group">
-                                <label for="type">Account Type:</label>
+                                <label htmlFor="type">Account Type:</label>
                                 <div className="form-check">
                                     <input type="radio" id="user" name="type" value="user" className="form-check-input" />
-                                    <label for="user" className="form-check-label">User</label>
+                                    <label htmlFor="user" className="form-check-label">User</label>
                                 </div>
                                 <div className="form-check">
                                     <input type="radio" id="admin" name="type" value="admin" className="form-check-input" />
-                                    <label for="admin" className="form-check-label">Admin</label>
+                                    <label htmlFor="admin" className="form-check-label">Admin</label>
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label for="newpassword">NewPassword:</label>
+                                <label htmlFor="newpassword">NewPassword:</label>
                                 <input type="text" id="newpassword" name="newpassword" placeholder='Enter NewPassword' className="form-control" />
                             </div>
                             <div className="form-group">
-                                <label for="confirmpassword">ConfirmPassword:</label>
+                                <label htmlFor="confirmpassword">ConfirmPassword:</label>
                                 <input type="confirmpassword" id="confirmpassword" name="confirmpassword" placeholder='Enter ConfirmPassword' className="form-control" />
                             </div>
 

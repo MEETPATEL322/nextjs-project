@@ -59,18 +59,18 @@ const Forgetpassword = () => {
                         <h1>Forgetpassword Page</h1>
                         <form>
                             <div className="form-group">
-                                <label for="type">Account Type:</label>
+                                <label htmlFor="type">Account Type:</label>
                                 <div className="form-check">
                                     <input type="radio" id="user" name="type" value="user" className="form-check-input" />
-                                    <label for="user" className="form-check-label">User</label>
+                                    <label htmlFor="user" className="form-check-label">User</label>
                                 </div>
                                 <div className="form-check">
                                     <input type="radio" id="admin" name="type" value="admin" className="form-check-input" />
-                                    <label for="admin" className="form-check-label">Admin</label>
+                                    <label htmlFor="admin" className="form-check-label">Admin</label>
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label for="email">email:</label>
+                                <label htmlFor="email">email:</label>
                                 <input type="text" id="email" name="email" className="form-control" />
                             </div>
                             <input type="submit" value="Submit" className="btn btn-primary btn-block" />
