@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import style from "../styles/admin.module.css";
 import Link from 'next/link'; import axios from 'axios';
 import { useRouter } from 'next/router';
+import Information from '@/pages/information';
+import { MdEdit, MdOutlineDelete } from 'react-icons/md';
 
 
 
-const AdminTable = () => {
-    // const { data } = props.data
+const AdminTable = (props) => {
+    const { Data1 } = props
+    console.log("Data1", Data1)
     const [data, setdata] = useState([]);
     useEffect(() => {
         getuser();
@@ -33,8 +36,6 @@ const AdminTable = () => {
     return (
         <>
             {/* <!-- TableFor Data --> */}
-
-
             <div className={`${style["TableData"]}`}>
                 <div className={`${style["TableDataContent"]}`}>
 
@@ -42,8 +43,6 @@ const AdminTable = () => {
                         <button className='btn btn-danger mx-3' >ADD</button>
                     </Link>
                     <div className={`${style["container"]} container`}>
-
-
 
                         <table className="table table-striped table-bordered">
                             <thead>
@@ -68,7 +67,7 @@ const AdminTable = () => {
                                     data && data.map((item) =>
                                         <tr>
                                             <th scope="row">{item._id}</th>
-                                            <td><img src={"http://localhost:3000/static/" + item.image} style={{ width: 100, height: 100, border: "2px solid black", borderRadius: 20 }} alt="image" /></td>
+                                            <td><img src={`${process.env.NEXT_PUBLIC_API_URL}/static/` + item.image} style={{ width: 100, height: 100, border: "2px solid black", borderRadius: 20 }} alt="image" /></td>
                                             <td>{item.firstname}</td>
                                             <td>{item.lastname}</td>
                                             <td>{item.mobile}</td>
@@ -78,17 +77,12 @@ const AdminTable = () => {
                                             <td>{item.birthdate}</td>
                                             <td>{item.education}</td>
                                             <td>{item.languages}</td>
-
                                             <td>1lakh</td>
-
                                             <td>
-                                                <a href="/information"> <button className='btn btn-success'  >Update</button></a>
-                                                <button className='btn btn-danger mx-3' onClick={() => DeleteHandler(item._id)}>Delete</button>
+                                                <button className='btn ' onClick={() => <Information data={item} />}><MdEdit /></button>
+                                                <button className='btn ' onClick={() => DeleteHandler(item._id)}><MdOutlineDelete /></button>
                                             </td>
-
-
                                         </tr>
-
                                     )
                                 }
 
@@ -101,5 +95,4 @@ const AdminTable = () => {
         </>
     );
 }
-
 export default AdminTable;

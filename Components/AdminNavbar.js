@@ -45,7 +45,7 @@ const AdminNavbar = () => {
                             className={`pt-2 nav nav-primary ${style["nav"]} ${style["nav-primary"]}`}
                         >
                             <li className={`nav-item ${style["nav-item"]} `}>
-                                <a href="#">
+                                <a href="/admin">
                                     <p className={`${style["tx-222D39"]} `}>1. Information</p>
                                 </a>
                             </li>

@@ -5,14 +5,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import { useNavigate } from 'react-router-dom';
 import { useRouter } from 'next/router';
+import AdminNavbar from '@/Components/AdminNavbar';
+import Link from 'next/link';
 
-const Information = () => {
+const Information = (props) => {
+
+    console.log("proppppppppppp", props.data)
     const [infoData, setinfoData] = useState({});
     const [image, setimage] = useState({});
     const [file, setfile] = useState();
     const [checkeddata, setcheckeddata] = useState([]);
-    const router=useRouter()
-
+    const router = useRouter()
     const handlesubmit = async (e) => {
         e.preventDefault();
         console.log("INFOO", { infoData, image, checkeddata })
@@ -73,7 +76,6 @@ const Information = () => {
                     draggable: true,
                     progress: undefined,
                 });
-
             }
         })
     }
@@ -103,17 +105,19 @@ const Information = () => {
         // setcheckeddata({ ...checkeddata, [e.target.name]: [e.target.chacked, e.target.value] })
     }
     return (
-        <> <ToastContainer
-            position="bottom-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-        />
+        <>
+            <AdminNavbar />
+            <ToastContainer
+                position="bottom-center"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <section className={`${style["login-block"]}`}>
                 <div className={`container ${style['']}`}>
                     <form className="login-form mt-3" onSubmit={handlesubmit}>
@@ -231,9 +235,10 @@ const Information = () => {
 
                             <div className="col-md-12 mt-3">
                                 <button type="submit" className={`${style['SubmitBtn']} btn`}>Submit</button>
+                                
+                                <div><Link href="/admin">admin</Link></div>
 
                             </div>
-
                         </div>
                     </form>
                 </div>
