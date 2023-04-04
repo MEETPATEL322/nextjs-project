@@ -163,6 +163,7 @@ const handler = async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS')
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+    console.log("Update Backend call")
 
     upload(req, res, async (err) => {
       if (err) {
@@ -205,29 +206,29 @@ const handler = async (req, res) => {
                 if (data) {
                   res
                     .status(200)
-                    .json({ message: "Information Data Updated", data: data });
+                    .json({ success: true, message: "Information Data Updated", data: data });
                 } else {
-                  res.status(400).json({ message: "error in Information updating" });
+                  res.status(400).json({ success: false, message: "error in Information updating" });
                 }
               }
             );
           } else {
             console.log("DOES NOT exist:", "public/static" + image.data);
-            res.status(400).send({ message: "DOES NOT exist: " })
+            res.status(400).send({ success: false, message: "DOES NOT exist: " })
           }
         } else {
-          res.status(400).send({ message: "image not found " })
+          res.status(400).send({ success: false, message: "image not found " })
 
         }
       } else {
         res
           .status(400)
-          .json({ message: "This Data is Not available in Database" });
+          .json({ success: false, message: "This Data is Not available in Database" });
       }
 
     })
   } else {
-    res.status(500).json({ message: "This method is not alllowed" });
+    res.status(500).json({ success: false, message: "This method is not alllowed" });
   }
 };
 export default connectDb(handler);

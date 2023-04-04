@@ -4,15 +4,15 @@ import { useRouter } from 'next/router';
 
 
 const AdminNavbar = () => {
-    const router=useRouter()
+    const router = useRouter()
     const logout = () => {
         localStorage.removeItem("token")
         localStorage.removeItem("type")
-        
+
         router.push("/login")
         // setUser({ value: null })
         // setKey(Math.random())
-      }
+    }
     return (
         <>
             <div className={`${style["main-header"]}`}>
@@ -34,7 +34,6 @@ const AdminNavbar = () => {
                 </nav>
                 {/* navbar-header */}
             </div>
-
             {/* <!-- Sidebar --> */}
             <div className={`${style["sidebar"]} ${style["sidebar-style-2"]}`}>
                 <div
@@ -54,10 +53,7 @@ const AdminNavbar = () => {
                 </div>
             </div>
             {/* <!-- End Sidebar --> */}
-
-
         </>
     );
 }
-
 export default AdminNavbar;

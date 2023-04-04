@@ -31,6 +31,24 @@ const AdminTable = (props) => {
             getuser()
         })
     }
+    function Updatehandler(item) {
+        let { _id, firstname, image, lastname, email, mobile, education, gender, birthdate, languages, address } = item;
+        localStorage.setItem("ID", _id);
+
+        localStorage.setItem("image", image);
+        localStorage.setItem("firstname", firstname);
+        localStorage.setItem("lastname", lastname);
+        localStorage.setItem("email", email);
+        localStorage.setItem("mobile", mobile);
+        localStorage.setItem("gender", gender);
+        localStorage.setItem("education", education);
+        localStorage.setItem("birthdate", birthdate);
+        localStorage.setItem("languages", languages);
+        localStorage.setItem("address", address);
+
+
+
+    }
 
 
     return (
@@ -79,8 +97,8 @@ const AdminTable = (props) => {
                                             <td>{item.languages}</td>
                                             <td>1lakh</td>
                                             <td>
-                                                <button className='btn ' onClick={() => <Information data={item} />}><MdEdit /></button>
-                                                <button className='btn ' onClick={() => DeleteHandler(item._id)}><MdOutlineDelete /></button>
+                                                <Link href={'/information2'}> <button className='btn ' onClick={() => Updatehandler(item)}><MdEdit /></button>
+                                                </Link><button className='btn ' onClick={() => DeleteHandler(item._id)}><MdOutlineDelete /></button>
                                             </td>
                                         </tr>
                                     )
