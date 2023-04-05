@@ -21,7 +21,7 @@ const AdminTable = (props) => {
         axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/information`, { headers })
             .then((res) => {
                 setdata(res.data.data)
-                console.log(res.data)
+                console.log("Get", res.data)
             })
     }
     function DeleteHandler(id) {
@@ -94,7 +94,7 @@ const AdminTable = (props) => {
                                             <td>{item.address}</td>
                                             <td>{item.birthdate}</td>
                                             <td>{item.education}</td>
-                                            <td>{item.languages}</td>
+                                            <td>{(item.languages).map(item => item)}</td>
                                             <td>1lakh</td>
                                             <td>
                                                 <Link href={'/information2'}> <button className='btn ' onClick={() => Updatehandler(item)}><MdEdit /></button>

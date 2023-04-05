@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import AdminNavbar from '@/Components/AdminNavbar';
 import Link from 'next/link';
 import Image from 'next/image';
+import moment from "moment";
 const Information2 = () => {
     const [firstname, setfirstname] = useState();
     const [image, setimage] = useState();
@@ -17,12 +18,13 @@ const Information2 = () => {
     const [mobile, setmobile] = useState();
     const [address, setaddress] = useState();
     const [education, seteducation] = useState();
-    const [languages, setlanguages] = useState([]);
-    const [gender, setgender] = useState();
+    const [languages, setlanguages] = useState('');
+    const [gender, setgender] = useState(false);
     const [birthdate, setbirthdate] = useState();
     const [file, setfile] = useState();
-    // const [data, setdata] = useState()
+    const [lang, setlang] = useState()
     const router = useRouter()
+
     useEffect(() => {
         setid(localStorage.getItem('ID'));
         setfirstname(localStorage.getItem('firstname'));
@@ -35,10 +37,12 @@ const Information2 = () => {
         setbirthdate(localStorage.getItem('birthdate'));
         setaddress(localStorage.getItem('address'));
         setmobile(localStorage.getItem('mobile'));
-
-    }, [5000])
+    }, [])
+    console.log({ id, firstname, email, languages })
+    const data22 = languages.split(",")
+    // const checkbox = document.querySelector('#my-checkbox');
+    // checkbox.checked = checkboxValue;
     const handlechecked = (e) => {
-
         // const data = [];
         // data.push(e.target.value)
         // setcheckeddata(data)
@@ -53,8 +57,8 @@ const Information2 = () => {
         // setcheckeddata({ ...checkeddata, [e.target.name]: [e.target.chacked, e.target.value] })
     }
     function updateData() {
-
         const formdata = new FormData()
+        console.log("IMAGE", image)
         formdata.append("firstname", firstname)
         formdata.append("lastname", lastname)
         formdata.append("image", image)
@@ -66,40 +70,39 @@ const Information2 = () => {
         formdata.append("education", education)
         formdata.append("languages", languages.map(item => item.languages))
         formdata.append("email", email)
-        console.log("FormData", id)
         let url = `${process.env.NEXT_PUBLIC_API_URL}/api/information?id=${id}`
         // axios.put(url, formdata).then((response) => console.log(response.data))
-        axios.put(url, formdata
-        ).then((response) => {
+        // axios.put(url, formdata
+        // ).then((response) => {
 
-            console.log("Response", response.data)
-            if (response.data.success) {
-                toast.success(response.data.message, {
-                    position: "bottom-center",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
-                setTimeout(() => {
-                    router.push("/admin")
-                }, 1000);
+        //     console.log("Response", response.data)
+        //     if (response.data.success) {
+        //         toast.success(response.data.message, {
+        //             position: "bottom-center",
+        //             autoClose: 1000,
+        //             hideProgressBar: false,
+        //             closeOnClick: true,
+        //             pauseOnHover: true,
+        //             draggable: true,
+        //             progress: undefined,
+        //         });
+        //         setTimeout(() => {
+        //             router.push("/admin")
+        //         }, 1000);
 
 
-            } else {
-                toast.error(response.data.message, {
-                    position: "bottom-center",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
-            }
-        })
+        //     } else {
+        //         toast.error(response.data.message, {
+        //             position: "bottom-center",
+        //             autoClose: 1000,
+        //             hideProgressBar: false,
+        //             closeOnClick: true,
+        //             pauseOnHover: true,
+        //             draggable: true,
+        //             progress: undefined,
+        //         });
+        //     }
+        // })
     }
     return (
         <>
@@ -149,11 +152,11 @@ const Information2 = () => {
                                     <label htmlFor="exampleInputGender" className="">Gender</label>
                                     <div className={`${style["RadioBox"]}`} >
                                         <div className={`${style["form-check"]} form-check`}>
-                                            <input className={`${style["form-check-input"]} form-check-input`} type="radio" value={"Male"} onChange={(e) => setgender(e.target.value)} name="gender" id="flexRadioMale" />
+                                            <input className={`${style["form-check-input"]} form-check-input`} type="radio" value={"Male"} onChange={(e) => setgender(e.target.value)} name="gender" id="flexRadioMale" checked={`(${gender}=="Male")` ? true : false} />
                                             <label className={`${style["form-check-label"]} form-check-label`} htmlFor="flexRadioMale">Male</label>
                                         </div>
                                         <div className={`${style["form-check"]} form-check`}>
-                                            <input className={`${style["form-check-input"]} form-check-input`} type="radio" value={"Female"} onChange={(e) => setgender(e.target.value)} name="gender" id="flexRadioFemale" />
+                                            <input className={`${style["form-check-input"]} form-check-input`} type="radio" value={"Female"} onChange={(e) => setgender(e.target.value)} name="gender" id="flexRadioFemale" checked={`(${gender}=="Female")` ? true : false} />
                                             <label className={`${style["form-check-label"]} form-check-label`} htmlFor="flexRadioFemale">Female</label>
                                         </div>
                                         <div className={`${style["form-check"]} form-check`}>
@@ -181,7 +184,7 @@ const Information2 = () => {
                             <div className="col-md-6">
                                 <div className={`${style['form-group']} form-group`}>
                                     <label htmlFor="exampleInputBirthDate" className="">BirthDate</label>
-                                    <input type="date" value={birthdate} onChange={(e) => setbirthdate(e.target.value)} name='birthdate' className={`${style['form-control']} form-control`} placeholder="Abhishel" />
+                                    <input type="date" value={moment(`${birthdate}`).utc().format('YYYY-MM-DD')} onChange={(e) => setbirthdate(e.target.value)} name='birthdate' className={`${style['form-control']} form-control`} placeholder="Abhishel" />
                                 </div>
                             </div>
                             {/* Education */}
@@ -205,7 +208,7 @@ const Information2 = () => {
                                     <label htmlFor="exampleInputlanguages" className="">Languages</label>
                                     <div className={`${style["RadioBox"]}`} >
                                         <div className={`${style["form-check"]} form-check`}>
-                                            <input className={`${style["form-check-input"]} form-check-input`} type="checkbox" onChange={handlechecked} name="languages" value="FrondEnd" id="LanguageOne" />
+                                            <input className={`${style["form-check-input"]} form-check-input`} type="checkbox" onChange={handlechecked} name="languages" value="FrondEnd" id="LanguageOne"  />
                                             <label className={`${style["form-check-label"]} form-check-label`} htmlFor="LanguageOne">FrondEnd</label>
                                         </div>
                                         <div className={`${style["form-check"]} form-check`}>
