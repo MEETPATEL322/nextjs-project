@@ -208,11 +208,11 @@ const Information2 = () => {
                                     <label htmlFor="exampleInputlanguages" className="">Languages</label>
                                     <div className={`${style["RadioBox"]}`} >
                                         <div className={`${style["form-check"]} form-check`}>
-                                            <input className={`${style["form-check-input"]} form-check-input`} type="checkbox" onChange={handlechecked} name="languages" value="FrondEnd" id="LanguageOne"  />
+                                            <input className={`${style["form-check-input"]} form-check-input`} type="checkbox" onChange={handlechecked} name="languages" value="FrondEnd" id="LanguageOne" checked={data22[0]=="FrondEnd"?true:false}  />
                                             <label className={`${style["form-check-label"]} form-check-label`} htmlFor="LanguageOne">FrondEnd</label>
                                         </div>
                                         <div className={`${style["form-check"]} form-check`}>
-                                            <input className={`${style["form-check-input"]} form-check-input`} type="checkbox" onChange={handlechecked} name="languages" value="Backend" id="LanguageTwo" />
+                                            <input className={`${style["form-check-input"]} form-check-input`} type="checkbox" onChange={handlechecked} name="languages" value="Backend" id="LanguageTwo" checked={data22[1]=="Backend"?true:false} />
                                             <label className={`${style["form-check-label"]} form-check-label`} htmlFor="LanguageTwo">Backend</label>
                                         </div>
                                     </div>
